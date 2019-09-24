@@ -3,11 +3,11 @@
 	See LICENSE in the project root for license information.
 */
 
-namespace console_csharp_connect_sample
+namespace netfx_console_csharp_connect_sample
 {
-    internal class Constants
-    {		
-		public const string EmailContent = 
+	internal class Constants
+	{
+		public const string EmailContent =
 			"<html><head> <meta http-equiv='Content-Type' content='text/html; charset=us-ascii'> <title></title> </head><body style='font-family:calibri'> " +
 			"<p>Congratulations!</p> <p>This is a message from the Microsoft Graph Connect Sample. You are well on your way to incorporating Microsoft Graph endpoints in your apps." +
 			"</p><a href='{0}'>Click here to view the profile photo you just uploaded to OneDrive!</a> <h3>What&#8217;s next?</h3> " +
@@ -21,5 +21,5 @@ namespace console_csharp_connect_sample
 			"<div style='text-align:center; font-family:calibri'> <table style='width:100%; font-family:calibri'> <tbody> <tr> <td><a href='https://github.com/microsoftgraph/console-csharp-connect-sample'>See on GitHub</a> " +
 			"</td> <td><a href='https://officespdev.uservoice.com'>Suggest on UserVoice</a> </td> " +
 			"<td><a href='https://twitter.com/share?text=I%20just%20started%20developing%20apps%20for%20%23NodeJS%20using%20the%20%23MicrosoftGraph%20Connect%20app%20%40OfficeDev&amp;url=https://github.com/microsoftgraph/nodejs-connect-rest-sample'>Share on Twitter</a> </td> </tr> </tbody> </table> </div></body> </html>";
-    }
+	}
 }

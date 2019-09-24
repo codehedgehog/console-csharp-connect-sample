@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace console_csharp_connect_sample.Helpers
+namespace netfx_console_csharp_connect_sample.Helpers
 {
 	/// <summary>
 	/// This class allows an implementation of IAuthenticationProvider to be inserted into the DelegatingHandler

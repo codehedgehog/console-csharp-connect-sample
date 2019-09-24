@@ -2,16 +2,16 @@
 	Copyright (c) 2019 Microsoft Corporation. All rights reserved. Licensed under the MIT license.
 	See LICENSE in the project root for license information.
 */
- 
+
+using Microsoft.Graph;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.Graph;
 
-namespace console_csharp_connect_sample
+namespace netfx_console_csharp_connect_sample
 {
-	class MailHelper
+	internal class MailHelper
 	{
 		private static GraphServiceClient _graphServiceClient = null;
 
@@ -33,7 +33,6 @@ namespace console_csharp_connect_sample
 		{
 			// Get current user photo
 			Stream photoStream = await GetCurrentUserPhotoStreamAsync();
-
 
 			// If the user doesn't have a photo, or if the user account is MSA, we use a default photo
 
@@ -96,7 +95,6 @@ namespace console_csharp_connect_sample
 					throw new Exception("We could not send the message: " + exception.Error == null ? "No error message returned." : exception.Error.Message);
 				}
 			}
-
 			catch (Exception e)
 			{
 				throw new Exception("We could not send the message: " + e.Message);
@@ -104,7 +102,7 @@ namespace console_csharp_connect_sample
 		}
 
 		/// <summary>
-		/// Gets the stream content of the signed-in user's photo. 
+		/// Gets the stream content of the signed-in user's photo.
 		/// This snippet doesn't work with consumer accounts.
 		/// </summary>
 		/// <returns>Photo Stream</returns>
@@ -115,7 +113,6 @@ namespace console_csharp_connect_sample
 			try
 			{
 				currentUserPhotoStream = await _graphServiceClient.Me.Photo.Content.Request().GetAsync();
-
 			}
 			// If the user account is MSA (not work or school), the service will throw an exception.
 			catch (Exception)
@@ -124,7 +121,6 @@ namespace console_csharp_connect_sample
 			}
 
 			return currentUserPhotoStream;
-
 		}
 
 		/// <summary>

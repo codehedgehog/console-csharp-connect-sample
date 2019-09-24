@@ -3,26 +3,26 @@
 	See LICENSE in the project root for license information.
 */
 
+using Microsoft.Graph;
+using Microsoft.Identity.Client;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.Identity.Client;
-using Microsoft.Graph;
-using System.Linq;
 
-namespace console_csharp_connect_sample.Helpers
+namespace netfx_console_csharp_connect_sample.Helpers
 {
 	/// <summary>
-	/// This class encapsulates the details of getting a token from MSAL and exposes it via the 
+	/// This class encapsulates the details of getting a token from MSAL and exposes it via the
 	/// IAuthenticationProvider interface so that GraphServiceClient or AuthHandler can use it.
 	/// </summary>
 	/// A significantly enhanced version of this class will in the future be available from
 	/// the GraphSDK team. It will support all the types of Client Application as defined by MSAL.
 	public class MsalAuthenticationProvider : IAuthenticationProvider
-	{		
+	{
 		private PublicClientApplication _clientApplication;
-		private  string[] _scopes;
-	    
+		private string[] _scopes;
+
 		public MsalAuthenticationProvider(PublicClientApplication clientApplication, string[] scopes)
 		{
 			_clientApplication = clientApplication;
@@ -48,13 +48,13 @@ namespace console_csharp_connect_sample.Helpers
 
 			try
 			{
-				authResult = await _clientApplication.AcquireTokenSilentAsync(_scopes, accounts.FirstOrDefault());
+				authResult = await _clientApplication.AcquireTokenSilent(_scopes, accounts.FirstOrDefault()).ExecuteAsync();
 			}
 			catch (MsalUiRequiredException)
 			{
 				try
 				{
-					authResult = await _clientApplication.AcquireTokenAsync(_scopes);					
+					authResult = await _clientApplication.AcquireTokenInteractive(_scopes).ExecuteAsync();
 				}
 				catch (MsalException)
 				{
@@ -64,6 +64,5 @@ namespace console_csharp_connect_sample.Helpers
 
 			return authResult;
 		}
-
 	}
 }

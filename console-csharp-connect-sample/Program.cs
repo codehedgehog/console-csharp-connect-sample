@@ -7,13 +7,13 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace console_csharp_connect_sample
+namespace netfx_console_csharp_connect_sample
 {
-	class Program
-    {	
-		static async Task Main(string[] args)
-        {	
-			Console.WriteLine("Welcome to the C# Console Connect Sample!\n");			
+	internal class Program
+	{
+		private static async Task Main(string[] args)
+		{
+			Console.WriteLine("Welcome to the C# Console Connect Sample!\n");
 
 			try
 			{
@@ -44,7 +44,7 @@ namespace console_csharp_connect_sample
 
 						var mailHelper = new MailHelper(graphServiceClient);
 						await MailHelper.ComposeAndSendMailAsync("Welcome to Microsoft Graph development with C# and the Microsoft Graph Connect sample", Constants.EmailContent, messageAddress);
-						
+
 						Console.WriteLine("\nEmail sent! \n Want to send another message? Type 'y' for yes and any other key to exit.");
 						ConsoleKeyInfo userInputSendMail = Console.ReadKey();
 						sendMail = (userInputSendMail.KeyChar == 'y') ? true : false;
@@ -58,9 +58,9 @@ namespace console_csharp_connect_sample
 					Console.ResetColor();
 					Console.ReadKey();
 					return;
-				}								
+				}
 			}
-			catch(ArgumentNullException ex)
+			catch (ArgumentNullException ex)
 			{
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine(ex.Message + "\nPlease follow the Readme instructions for configuring this application.");
@@ -72,8 +72,8 @@ namespace console_csharp_connect_sample
 			{
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("The configuration file 'appsettings.json' was not found. " +
-								  "Rename the file 'appsettings.json.example' in the solutions folder to 'appsettings.json'." +
-								  "\nPlease follow the Readme instructions for configuring this application.");
+									"Rename the file 'appsettings.json.example' in the solutions folder to 'appsettings.json'." +
+									"\nPlease follow the Readme instructions for configuring this application.");
 				Console.ResetColor();
 				Console.ReadKey();
 				return;
@@ -90,6 +90,6 @@ namespace console_csharp_connect_sample
 				Console.ReadKey();
 				return;
 			}
-		}	
+		}
 	}
 }
