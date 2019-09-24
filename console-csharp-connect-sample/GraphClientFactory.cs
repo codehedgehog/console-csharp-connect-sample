@@ -12,22 +12,22 @@ using System.Collections.Generic;
 namespace console_csharp_connect_sample
 {
 	/// <summary>
-	/// This static class returns a fully constructed 
-	/// instance of the GraphServiceClient with the client 
+	/// This static class returns a fully constructed
+	/// instance of the GraphServiceClient with the client
 	/// data to be used when authenticating requests to the Graph API
-	/// </summary> 
+	/// </summary>
 	public static class GraphClientFactory
-	{		
+	{
 		public static GraphServiceClient GetGraphServiceClient(string clientId, string authority, IEnumerable<string> scopes)
-		{		
+		{
 			var authenticationProvider = CreateAuthorizationProvider(clientId, authority, scopes);
 			return new GraphServiceClient(authenticationProvider);
 		}
-		
+
 		private static IAuthenticationProvider CreateAuthorizationProvider(string clientId, string authority, IEnumerable<string> scopes)
 		{
-			var clientApplication = new PublicClientApplication(clientId, authority);
-			return new MsalAuthenticationProvider(clientApplication, scopes.ToArray());		
+			PublicClientApplication clientApplication = (PublicClientApplication)PublicClientApplicationBuilder.Create(clientId: clientId).WithAdfsAuthority(authorityUri: authority).Build();
+			return new MsalAuthenticationProvider(clientApplication, scopes.ToArray());
 		}
 	}
 }
