@@ -3,14 +3,14 @@
 	See LICENSE in the project root for license information.
 */
 
+using Microsoft.Graph;
+using Microsoft.Identity.Client;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.Identity.Client;
-using Microsoft.Graph;
-using System.Linq;
 
-namespace console_csharp_connect_sample.Helpers
+namespace netfx_console_csharp_connect_sample.Helpers
 {
 	/// <summary>
 	/// This class encapsulates the details of getting a token from MSAL and exposes it via the
@@ -64,6 +64,5 @@ namespace console_csharp_connect_sample.Helpers
 
 			return authResult;
 		}
-
 	}
 }

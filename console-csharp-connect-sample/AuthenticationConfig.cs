@@ -10,7 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 
-namespace console_csharp_connect_sample
+namespace netfx_console_csharp_connect_sample
 {
 	/// <summary>
 	/// Description of the configuration of an AzureAD public client application (desktop/mobile application). This should
@@ -22,7 +22,7 @@ namespace console_csharp_connect_sample
 		/// instance of Azure AD, for example public Azure or a Sovereign cloud (Azure China, Germany, US government, etc ...)
 		/// </summary>
 		public string Instance { get; set; } = "https://login.microsoftonline.com/{0}";
-		
+
 		/// <summary>
 		/// The Tenant is:
 		/// - either the tenant ID of the Azure AD tenant in which this application is registered (a guid)
@@ -30,7 +30,7 @@ namespace console_csharp_connect_sample
 		/// - or 'organizations' (for a multi-tenant application)
 		/// </summary>
 		public string TenantId { get; set; }
-		
+
 		/// <summary>
 		/// Guid used by the application to uniquely identify itself to Azure AD
 		/// </summary>
@@ -40,7 +40,7 @@ namespace console_csharp_connect_sample
 		/// Delegated resource access permissions as configured in the application registration in your Azure account portal
 		/// </summary>
 		public IEnumerable<string> Scopes { get; set; }
-		
+
 		/// <summary>
 		/// URL of the authority
 		/// </summary>
@@ -53,7 +53,7 @@ namespace console_csharp_connect_sample
 		}
 
 		/// <summary>
-		/// Checks whether the configuration parameters have values. 
+		/// Checks whether the configuration parameters have values.
 		/// </summary>
 		/// <exception cref="ArgumentNullException">
 		/// Returns an ArgumentNullException if the parameter is empty or has white space
@@ -68,7 +68,7 @@ namespace console_csharp_connect_sample
 			if (string.IsNullOrWhiteSpace(Instance))
 				throw new ArgumentNullException(nameof(Instance), message);
 			if (!Scopes.Any())
-				throw new ArgumentNullException(nameof(Scopes), message);								
+				throw new ArgumentNullException(nameof(Scopes), message);
 		}
 
 		/// <summary>
@@ -88,15 +88,15 @@ namespace console_csharp_connect_sample
 
 				var builder = new ConfigurationBuilder()
 				 .SetBasePath(Directory.GetCurrentDirectory())
-				.AddJsonFile(path,false);
+				.AddJsonFile(path, false);
 
-				configuration = builder.Build();				
+				configuration = builder.Build();
 				return configuration.Get<AuthenticationConfig>();
 			}
 			catch (FileNotFoundException)
 			{
 				throw;
-			}			
+			}
 		}
 	}
 }
