@@ -26,7 +26,7 @@ namespace netfx_console_csharp_connect_sample
 
 		private static IAuthenticationProvider CreateAuthorizationProvider(string clientId, string authority, IEnumerable<string> scopes)
 		{
-			PublicClientApplication clientApplication =  (PublicClientApplication)PublicClientApplicationBuilder.Create(clientId: clientId).WithAdfsAuthority(authorityUri: authority).Build();
+			PublicClientApplication clientApplication = (PublicClientApplication)PublicClientApplicationBuilder.Create(clientId: clientId).WithAdfsAuthority(authorityUri: authority).Build();
 			return new MsalAuthenticationProvider(clientApplication, scopes.ToArray());
 		}
 	}
